@@ -7,12 +7,14 @@ router.get('/login',(req,res)=>{
     res.render('login')
 });
 
-router.get('/facebook',passport.authenticate('facebook'));
+router.get('/facebook',passport.authenticate('facebook',{
+    scope:['user_friends']
+}));
 
 router.get('/logout',(req,res)=>{
     res.send('Logging out');
 });
-router.get('/facebook/redirect',(req,res)=>{
-    res.send('YOu reached the callback url');
-})
+router.get('/facebook/redirect',passport.authenticate('facebook'),(req,res)=>{
+    res.send('You reached the callback url');
+});
 module.exports = router;

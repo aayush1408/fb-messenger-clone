@@ -6,7 +6,8 @@ passport.use(
     callbackURL:'/auth/facebook/redirect',
     clientID:keys.facebook.clientID,
     clientSecret:keys.facebook.clientSecret
-},()=>{
-
+},(accessToken,refreshToken,profile,cb)=>{
+    // return cb(null,profile);
+    console.log(profile);
 })
 );
